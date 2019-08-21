@@ -39,6 +39,14 @@ h1 {
     font-weight: 100;
 }
 
+a {
+    color: white;
+}
+
+a:hover {
+    color: black;
+}
+
 h2 {
     font-size: 3em;
     font-weight: 100;

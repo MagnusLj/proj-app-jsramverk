@@ -6,7 +6,43 @@
       <!-- <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p> -->
 
-      <p> <br>{{ text }} </p>
+    <p> <br>{{ text }} <a href="https://github.com/MagnusLj/jsramverk">kursrepot på GitHub</a></p>
+    <p><br>Här nedan kommer texten från README.md<br></p>
+    <pre>
+
+
+        
+        # me-vue
+
+        ## Project setup
+        ```
+        npm install
+        ```
+
+        ### Compiles and hot-reloads for development
+        ```
+        npm run serve
+        ```
+
+        ### Compiles and minifies for production
+        ```
+        npm run build
+        ```
+
+        ### Run your tests
+        ```
+        npm run test
+        ```
+
+        ### Lints and fixes files
+        ```
+        npm run lint
+        ```
+
+        ### Customize configuration
+        See [Configuration Reference](https://cli.vuejs.org/config/).
+    </pre>
+
     <!-- </div> -->
 </main>
 
@@ -23,7 +59,7 @@ export default {
   data() {
     return {
         heading: "Redovisning kmom01",
-        text: "Hej hej, här är någon slags redovisningstext."
+        text: "Hej, här är en länk till "
       // questions: [],
     }
   },
