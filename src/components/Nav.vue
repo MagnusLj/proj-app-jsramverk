@@ -5,6 +5,7 @@
         <li><router-link to="/report/kmom01">kmom01</router-link></li>-->
         <li><router-link to="/">Me</router-link></li>
         <li><router-link to="/reports/week/1">kmom01</router-link></li>
+        <li><router-link to="/registration">Registrering</router-link></li>
     </ul>
 </nav>
 </template>

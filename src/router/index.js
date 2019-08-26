@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Me2 from '@/components/Me2'
 // import Report from '@/components/Report'
 import Reports1 from '@/components/Reports1'
+import Registration from '@/components/Registration'
 
 Vue.use(Router)
 
@@ -38,6 +39,11 @@ export default new Router({
         path: '/reports/week/1',
         name: 'Redovisning kmom01',
         component: Reports1
+    },
+    {
+        path: '/registration',
+        name: 'Registrering',
+        component: Registration
     }
   ]
 })
