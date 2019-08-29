@@ -6,42 +6,114 @@
       <!-- <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p> -->
 
-    <p> <br>{{ text }} <a href="https://github.com/MagnusLj/jsramverk">kursrepot på GitHub</a></p>
-    <p><br>Här nedan kommer texten från README.md<br></p>
-    <pre>
+      <form
+        id="theform"
+        @submit="checkForm"
+        action="www.a.puff"
+        method="post"
+        novalidate="true"
+      >
+
+        <p v-if="errors.length">
+          <b>Vänligen fixa följande:</b>
+          <ul>
+            <li v-for="error in errors" :key="error">{{ error }}</li>
+          </ul>
+        </p>
+
+        <p>
+          <label for="name">Namn<br></label>
+          <input
+            id="name"
+            v-model="name"
+            type="text"
+            name="name"
+          >
+        </p>
+
+        <p>
+          <label for="email">Email<br></label>
+          <input
+            id="email"
+            v-model="email"
+            type="email"
+            name="email"
+          >
+        </p>
+
+        <div>
+            <p>
+            <label for="birthday">Födelsedatum<br></label>
+        </p>
+            <div class="form-group">
+            <label for="day" class="ittybittylabel">Dag</label>
+            <input id="day" v-model="day" type="number" name="day">
+            </div>
+
+ <!-- <p>My mother has <span style="color:blue">blue</span> eyes.</p>  -->
 
 
+<div class="form-group">
+<label for="month" class="ittybittylabel">Månad</label>
+          <select
+            id="month"
+            v-model="month"
+            name="month"
+          >
+          <!-- <option disabled value=""></option> -->
+            <option value="januari">januari</option>
+            <option value="februari">februari</option>
+            <option value="mars">mars</option>
+            <option value="april">april</option>
+            <option value="maj">maj</option>
+            <option value="juni">juni</option>
+            <option value="juli">juli</option>
+            <option value="augusti">augusti</option>
+            <option value="september">september</option>
+            <option value="oktober">oktober</option>
+            <option value="november">november</option>
+            <option value="december">december</option>
+          </select>
+          </div>
+          <div class="form-group">
+          <label for="year" class="ittybittylabel">År</label>
+          <input id="year" v-model="year" type="number" name="year">
+      </div>
 
-        # me-vue
+  </div>
 
-        ## Project setup
-        ```
-        npm install
-        ```
+        <p>
+          <label for="password1">Lösenord<br></label>
+          </p>
+          <div class="form-group">
+          <label for="password1" class="ittybittylabel">Minst 8 tecken</label>
+          <input
+            id="password1"
+            v-model="password1"
+            type="password"
+            name="password1"
+          >
+      </div>
 
-        ### Compiles and hot-reloads for development
-        ```
-        npm run serve
-        ```
 
-        ### Compiles and minifies for production
-        ```
-        npm run build
-        ```
+        <p>
+          <label for="password2">Lösenord igen<br></label>
+          <input
+            id="password2"
+            v-model="password2"
+            type="password"
+            name="password2"
+          >
+        </p>
 
-        ### Run your tests
-        ```
-        npm run test
-        ```
+        <p>
+          <input
+            type="submit"
+            value="SKICKA"
+          >
+        </p>
 
-        ### Lints and fixes files
-        ```
-        npm run lint
-        ```
-
-        ### Customize configuration
-        See [Configuration Reference](https://cli.vuejs.org/config/).
-    </pre>
+      </form>
 
     <!-- </div> -->
 </main>
@@ -52,38 +124,78 @@
 import Nav from './Nav.vue'
 
 export default {
-  name: 'Registrering',
-  components: {
-    Nav,
-  },
-  data() {
-    return {
-        heading: "Registrering",
-        text: "Hej, här är en länk till "
-      // questions: [],
-    }
-  },
-  mounted() {
-    // this.getText(this.$route.params.kmom);
-  },
+    name: "Registrering",
+    components: {
+      Nav,
+    },
+  el: '#theform',
+  data: function() {
+return {
+    heading: "Registrering",
+    errors: [],
+    name: null,
+    email: null,
+    day: null,
+    month: "",
+    year: null,
+    password1: null,
+    password2: null
+  };
+},
   methods: {
-    // getText(kmom) {
-    //   let that = this;
-    //   that.text = "";
-    //   fetch("https://me-api.jsramverk.me/reports/" + kmom)
-    //   .then(function(response) {
-    //       return response.json();
-    //   })
-    //   .then(function(result) {
-    //       that.questions = result.data.map((question, index) => {
-    //         return {
-    //           key: index,
-    //           question: question.question,
-    //           answer: question.answer
-    //         };
-    //       });
-    //   });
-    // }
+    checkForm: function (e) {
+      this.errors = [];
+
+      if (!this.name) {
+        this.errors.push("Du måste ange ditt namn.");
+      }
+      if (!this.email) {
+        this.errors.push('Du måste ange din mailadress.');
+      } else if (!this.validEmail(this.email)) {
+        this.errors.push('Du måste ange en riktig mailadress.');
+    }
+    if (!this.password1 || (this.password1.length <8)) {
+        this.errors.push('Du måste välja ett lösenord med minst 8 tecken.');
+    }
+    // if ((this.password1).length < 8) {
+    //         this.errors.push('Lösenordet måste vara minst 8 tecken!');
+    //     }
+    if (!(this.password1===this.password2)) {
+        this.errors.push('Lösenorden stämmer inte överens.');
+  }
+// else if (this.password1.length < 8) {
+//         this.errors.push('Lösenordet måste vara minst 8 tecken!');
+//     }
+//
+//
+      if (!this.day || !this.year || !this.month) {
+        this.errors.push('Du måste ange ditt födelsedatum.');
+}
+else if (this.validDate(this.day, this.year)) {
+  this.errors.push('Du måste ange ett riktigt födelsedatum.');
+}
+      if (this.errors.length < 1) {
+        return true;
+      }
+
+      e.preventDefault();
+    },
+    validEmail: function (email) {
+      var re = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+  }
+  ,
+  validDate: function (day, year) {
+    if (day > 31) {
+        // this.errors.push('day');
+        return true;
+    } else if (year > 2019) {
+        // this.errors.push('year');
+        return true;
+    }
+  }
+
+
 
   }
 }
