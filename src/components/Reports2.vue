@@ -7,42 +7,8 @@
       <p>{{ question.answer }}</p> -->
 
     <p> <br>{{ text }} <a href="https://github.com/MagnusLj/jsramverk">kursrepot på GitHub</a></p>
-    <p><br>Här nedan kommer texten från README.md<br></p>
-    <pre>
+    <p><br>Här nedanför kommer lite text om var jag fick inspiration till registreringsformulär och datepicker.<br></p>
 
-
-
-# me-vue
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference]
-(https://cli.vuejs.org/config/).
-    </pre>
 
     <!-- </div> -->
 </main>
@@ -59,7 +25,7 @@ export default {
   },
   data() {
     return {
-        heading: "Redovisning kmom01",
+        heading: "Redovisning kmom02",
         text: "Hej, här är en länk till "
       // questions: [],
     }

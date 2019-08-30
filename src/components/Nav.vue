@@ -1,13 +1,36 @@
 <template>
-<nav>
+<!-- <nav>
     <ul>
-        <!--<li><router-link to="/">Me</router-link></li>
-        <li><router-link to="/report/kmom01">kmom01</router-link></li>-->
         <li><router-link to="/">Me</router-link></li>
         <li><router-link to="/reports/week/1">kmom01</router-link></li>
         <li><router-link to="/registration">Registrering</router-link></li>
     </ul>
-</nav>
+</nav> -->
+
+<div class="navbar">
+  <router-link to="/">Me</router-link>
+  <div class="subnav">
+    <button class="subnavbtn">Redovisning <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <router-link to="/reports/week/1">kmom01</router-link><br>
+      <router-link to="/reports/week/2">kmom02</router-link>
+    </div>
+  </div>
+  <router-link to="/registration">Registrering</router-link>
+
+  <!-- <div class="subnav">
+    <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="#bring">Bring</a>
+      <a href="#deliver">Deliver</a>
+      <a href="#package">Package</a>
+      <a href="#express">Express</a>
+    </div>
+  </div>
+  <a href="#contact">Contact</a> -->
+
+</div>
+
 </template>
 
 <script>

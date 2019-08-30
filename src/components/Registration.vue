@@ -17,7 +17,7 @@
         <p v-if="errors.length">
           <b>Vänligen fixa följande:</b>
           <ul>
-            <li v-for="error in errors" :key="error">{{ error }}</li>
+            <li v-for="error in errors" :key="error">{{ error }}</li><br>
           </ul>
         </p>
 
