@@ -1,7 +1,8 @@
 <template>
 <main>
     <Nav />
-    <h2><br>{{ heading }}</h2>
+    <div class="wrapper">
+    <br><h2><br>{{ heading }}</h2>
     <!-- <div class="question" v-for="question in questions" :key="question.key"> -->
       <!-- <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p> -->
@@ -44,7 +45,7 @@ See [Configuration Reference]
 (https://cli.vuejs.org/config/).
     </pre>
 
-    <!-- </div> -->
+    </div>
 </main>
 
 </template>
@@ -94,6 +95,11 @@ export default {
 <style scoped>
 h2 {
   text-transform: uppercase;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
 }
 
 .question {

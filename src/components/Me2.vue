@@ -1,8 +1,10 @@
 <template>
 <main>
     <Nav />
-    <h1>Me</h1>
+    <div class="wrapper">
+    <br><br><h1>Me</h1>
     <p>{{ text }}</p>
+</div>
 </main>
 </template>
 

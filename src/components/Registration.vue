@@ -1,7 +1,8 @@
 <template>
 <main>
     <Nav />
-    <h2><br>{{ heading }}</h2>
+
+    <br><h2><br>{{ heading }}</h2><br>
     <!-- <div class="question" v-for="question in questions" :key="question.key"> -->
       <!-- <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p> -->
@@ -23,22 +24,26 @@
 
         <p>
           <label for="name">Namn<br></label>
+          <div class="form-group">
           <input
             id="name"
             v-model="name"
             type="text"
             name="name"
           >
+      </div>
         </p>
 
         <p>
           <label for="email">Email<br></label>
+          <div class="form-group">
           <input
             id="email"
             v-model="email"
             type="email"
             name="email"
           >
+          </div>
         </p>
 
         <div>
@@ -75,6 +80,7 @@
             <option value="december">december</option>
           </select>
           </div>
+
           <div class="form-group">
           <label for="year" class="ittybittylabel">År</label>
           <input id="year" v-model="year" type="number" name="year">
@@ -96,15 +102,20 @@
       </div>
 
 
+  </div>
+
         <p>
           <label for="password2">Lösenord igen<br></label>
+          </p>
+          <div class="form-group">
+          <!-- <label for="password1" class="ittybittylabel">Minst 8 tecken</label> -->
           <input
             id="password2"
             v-model="password2"
             type="password"
             name="password2"
           >
-        </p>
+      </div>
 
         <p>
           <input
@@ -205,6 +216,15 @@ else if (this.validDate(this.day, this.year)) {
 <style scoped>
 h2 {
   text-transform: uppercase;
+    margin: 0 0.6em;
+}
+
+form {
+    margin: 0 2em;
+}
+
+p {
+    margin-bottom: -0.3em;
 }
 
 .question {
