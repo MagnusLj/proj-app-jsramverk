@@ -7,7 +7,7 @@
       <!-- <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p> -->
 
-    <p> <br>{{ text }} <a href="https://github.com/MagnusLj/jsramverk">kursrepot på GitHub</a></p>
+    <p> {{ text }} <a href="https://github.com/MagnusLj/jsramverk">kursrepot på GitHub</a></p>
     <p><br>Här nedanför kommer lite text om var jag fick inspiration till registreringsformulär och datepicker.<br></p>
     <br><p>Jag använde tips från den rekommenderade artikeln från Nielsen Norman Group. Då bland annat tipset med att
         ha labels strax ovanför och inte för långt ifrån fältet de beskriver. Jag har också enligt tips från artikeln

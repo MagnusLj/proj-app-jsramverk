@@ -18,9 +18,7 @@
       <li class="nav-item">
         <router-link class="nav-link" to="/">Me</router-link>
       </li>
-      <li class="nav-item">
-        <router-link class="nav-link" to="/registration">Registrering</router-link>
-      </li>
+
       <!-- <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li> -->
@@ -35,6 +33,14 @@
           <router-link class="dropdown-item bg-info" to="/reports/week/1">kmom01</router-link>
           <router-link class="dropdown-item bg-info" to="/reports/week/2">kmom02</router-link>
         </div>
+      </li>
+
+      <li class="nav-item">
+        <router-link class="nav-link" to="/registration">Ny användare</router-link>
+      </li>
+
+      <li class="nav-item">
+        <router-link class="nav-link" to="/login">Logga in</router-link>
       </li>
 
     </ul>
@@ -65,7 +71,7 @@
   </div>
   <a href="#contact">Contact</a> -->
 
-</div>
+<!-- </div> -->
 
 </template>
 

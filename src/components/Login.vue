@@ -137,14 +137,14 @@
 import Nav from './Nav.vue'
 
 export default {
-    name: "Registrering",
+    name: "Logga in",
     components: {
       Nav,
     },
   el: '#theform',
   data: function() {
 return {
-    heading: "Registrering",
+    heading: "Logga in",
     errors: [],
     name: null,
     email: null,

@@ -7,7 +7,7 @@
       <!-- <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p> -->
 
-    <p> <br>{{ text }} <a href="https://github.com/MagnusLj/jsramverk">kursrepot på GitHub</a></p>
+    <p> {{ text }} <a href="https://github.com/MagnusLj/jsramverk">kursrepot på GitHub</a></p>
     <p><br>Här nedan kommer texten från README.md<br></p>
     <pre>
 

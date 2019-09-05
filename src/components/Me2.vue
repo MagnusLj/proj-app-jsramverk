@@ -2,7 +2,7 @@
 <main>
     <Nav />
     <div class="wrapper">
-    <br><br><h1>Me</h1>
+    <br><br><br><h1>Me</h1>
     <p>{{ text }}</p>
 </div>
 </main>

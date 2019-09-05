@@ -6,6 +6,7 @@ import Me2 from '@/components/Me2'
 import Reports1 from '@/components/Reports1'
 import Reports2 from '@/components/Reports2'
 import Registration from '@/components/Registration'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -50,6 +51,11 @@ export default new Router({
         path: '/registration',
         name: 'Registrering',
         component: Registration
+    },
+    {
+        path: '/login',
+        name: 'Logga in',
+        component: Login
     }
   ]
 })
