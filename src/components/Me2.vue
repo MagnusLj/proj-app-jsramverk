@@ -2,7 +2,7 @@
 <main>
     <Nav />
     <div class="wrapper">
-    <br><br><br><h1>Me</h1>
+    <br><h2><br>Me</h2>
     <p>{{ text }}</p>
 </div>
 </main>
@@ -22,7 +22,7 @@ export default {
         text: `Hej, jag heter Magnus och läser webbprogrammering 120 poäng ` +
               "på distans på BTH. Annars jobbar jag med sjukvård och " +
               "journalsystem, håller på att göra iordning ett gammal hus som " +
-              "kräver en hel del tid. med mera. Jag har också en stor katt."
+              "kräver en hel del tid, med mera. Jag har också en stor katt."
     }
   },
   mounted() {
@@ -46,5 +46,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+h2 {
+  text-transform: uppercase;
+    /* margin: 0 0.6em; */
+}
 </style>

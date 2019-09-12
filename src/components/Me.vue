@@ -1,8 +1,10 @@
-<!-- <template>
+<template>
 <main>
     <Nav />
-    <h1>Me</h1>
+    <div class="wrapper">
+    <br><h2><br>Me</h2>
     <p>{{ text }}</p>
+    </div>
 </main>
 </template>
 
@@ -26,12 +28,13 @@ export default {
   methods: {
     getMe() {
       let that = this;
-      fetch("https://me-api.jsramverk.me")
+      fetch("http://me-api.dreamsofliden.me")
+      // fetch("localhost:9001/")
       .then(function(response) {
           return response.json();
       })
       .then(function(result) {
-          that.text = result.description;
+          that.text = result.data.blahblah;
       });
     }
   }
@@ -40,5 +43,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+h2 {
+  text-transform: uppercase;
+    /* margin: 0 0.6em; */
+}
 
 </style> -->

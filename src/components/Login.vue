@@ -22,7 +22,7 @@
           </ul>
         </p>
 
-        <p>
+        <!-- <p>
           <label for="name">Namn<br></label>
           </p>
           <div class="form-group">
@@ -32,7 +32,7 @@
             type="text"
             name="name"
           >
-      </div>
+      </div> -->
 
 
         <p>
@@ -48,7 +48,7 @@
           </div>
 
 
-        <div>
+        <!-- <div>
             <p>
             <label for="birthday">Födelsedatum<br></label>
         </p>
@@ -57,7 +57,7 @@
             <input id="day" v-model="day" type="number" name="day">
             </div>
 
- <!-- <p>My mother has <span style="color:blue">blue</span> eyes.</p>  -->
+
 
 
 <div class="form-group">
@@ -67,7 +67,7 @@
             v-model="month"
             name="month"
           >
-          <!-- <option disabled value=""></option> -->
+
             <option value="januari">januari</option>
             <option value="februari">februari</option>
             <option value="mars">mars</option>
@@ -88,13 +88,13 @@
           <input id="year" v-model="year" type="number" name="year">
       </div>
 
-  </div>
+  </div> -->
 
         <p>
           <label for="password1">Lösenord<br></label>
           </p>
           <div class="form-group">
-          <label for="password1" class="ittybittylabel">Minst 8 tecken</label>
+          <!-- <label for="password1" class="ittybittylabel">Minst 8 tecken</label> -->
           <input
             id="password1"
             v-model="password1"
@@ -106,18 +106,17 @@
 
   <!-- </div> -->
 
-        <p>
+        <!-- <p>
           <label for="password2">Lösenord igen<br></label>
           </p>
           <div class="form-group">
-          <!-- <label for="password1" class="ittybittylabel">Minst 8 tecken</label> -->
           <input
             id="password2"
             v-model="password2"
             type="password"
             name="password2"
           >
-      </div>
+      </div> -->
 
         <p>
           <input
@@ -159,34 +158,34 @@ return {
     checkForm: function (e) {
       this.errors = [];
 
-      if (!this.name) {
-        this.errors.push("Du måste ange ditt namn.");
-      }
+      // if (!this.name) {
+      //   this.errors.push("Du måste ange ditt namn.");
+      // }
       if (!this.email) {
         this.errors.push('Du måste ange din mailadress.');
       } else if (!this.validEmail(this.email)) {
         this.errors.push('Du måste ange en riktig mailadress.');
     }
-    if (!this.password1 || (this.password1.length <8)) {
-        this.errors.push('Du måste välja ett lösenord med minst 8 tecken.');
+    if (!this.password1) {
+        this.errors.push('Du måste ange ditt lösenord.');
     }
     // if ((this.password1).length < 8) {
     //         this.errors.push('Lösenordet måste vara minst 8 tecken!');
     //     }
-    if (!(this.password1===this.password2)) {
-        this.errors.push('Lösenorden stämmer inte överens.');
-  }
+  //   if (!(this.password1===this.password2)) {
+  //       this.errors.push('Lösenorden stämmer inte överens.');
+  // }
 // else if (this.password1.length < 8) {
 //         this.errors.push('Lösenordet måste vara minst 8 tecken!');
 //     }
 //
 //
-      if (!this.day || !this.year || !this.month) {
-        this.errors.push('Du måste ange ditt födelsedatum.');
-}
-else if (this.validDate(this.day, this.year)) {
-  this.errors.push('Du måste ange ett riktigt födelsedatum.');
-}
+//       if (!this.day || !this.year || !this.month) {
+//         this.errors.push('Du måste ange ditt födelsedatum.');
+// }
+// else if (this.validDate(this.day, this.year)) {
+//   this.errors.push('Du måste ange ett riktigt födelsedatum.');
+// }
       if (this.errors.length < 1) {
         return true;
       }
