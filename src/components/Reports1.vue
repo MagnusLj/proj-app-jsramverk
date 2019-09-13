@@ -2,7 +2,8 @@
 <main>
     <Nav />
     <div class="wrapper">
-    <br><h2><br>{{ heading }}</h2>
+    <!-- <br><h2><br>{{ heading }}</h2> -->
+    <br><h2><br>redovisning vecka {{ $route.params.week }}</h2>
     <!-- <div class="question" v-for="question in questions" :key="question.key"> -->
       <!-- <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p> -->

@@ -1,10 +1,13 @@
 <template>
 <main>
     <Nav />
-    <h2>{{ $route.params.kmom }}</h2>
-    <div class="question" v-for="question in questions" :key="question.key">
+    <div class="wrapper">
+    <h2>{{ $route.params.week }}</h2>
+    <div v-html="compiledMarkdown"></div>
+    <!-- <div class="question" v-for="question in questions" :key="question.key">
       <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p>
+    </div> -->
     </div>
 </main>
 
@@ -14,40 +17,47 @@
 import Nav from './Nav.vue'
 
 export default {
-  name: 'Report',
+  name: 'Reports',
   components: {
     Nav,
   },
   data() {
     return {
-      questions: [],
+      // questions: [],
+      text: ""
     }
   },
   mounted() {
-    this.getText(this.$route.params.kmom);
+    this.getText(this.$route.params.week);
+  },
+  computed: {
+    compiledMarkdown: function () {
+      return marked(this.text, { sanitize: true })
+    }
   },
   methods: {
-    getText(kmom) {
+    getText(week) {
       let that = this;
       that.text = "";
-      fetch("https://me-api.jsramverk.me/reports/" + kmom)
+      fetch("http://me-api.dreamsofliden.me/reports/week/" + week)
       .then(function(response) {
           return response.json();
       })
       .then(function(result) {
-          that.questions = result.data.map((question, index) => {
-            return {
-              key: index,
-              question: question.question,
-              answer: question.answer
-            };
-          });
+          that.text = result.data.blahblah;
       });
     }
-
-  }
 }
+  }
+
 </script>
+
+
+
+
+
+
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
