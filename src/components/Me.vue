@@ -28,7 +28,7 @@ export default {
   methods: {
     getMe() {
       let that = this;
-      fetch("http://me-api.dreamsofliden.me")
+      fetch("https://me-api.dreamsofliden.me")
       // fetch("localhost:9001/")
       .then(function(response) {
           return response.json();

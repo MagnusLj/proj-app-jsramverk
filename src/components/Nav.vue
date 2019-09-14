@@ -42,6 +42,9 @@
       <li class="nav-item">
         <router-link class="nav-link" to="/login">Logga in</router-link>
       </li>
+      <li class="nav-item">
+        <router-link class="nav-link" to="/addoredit">Lägg till eller redigera</router-link>
+      </li>
 
     </ul>
   </div>

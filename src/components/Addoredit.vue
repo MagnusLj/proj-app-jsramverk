@@ -2,21 +2,33 @@
 <main>
     <Nav />
     <div class="wrapper">
-    <br><h2><br>redovisning vecka {{ $route.params.week }}</h2>
+    <h2>Skapa eller redigera </h2>
+    <p>
+      <label for="week">Vecka<br></label>
+  </p>
+      <div class="form-group">
+      <input
+        id="week"
+        v-model="week"
+        type="number"
+        name="week"
+        @input="getText(week)"
+      >
 
-    <!-- <div class="form-group">
-    <input
-      id="week"
-      v-model="week"
-      type="number"
-      name="week"
-      value="theweek"
-      @input="getText(week)"
-    >
+      </div>
 
-    </div> -->
-    <div v-html="compiledMarkdown"></div>
+      <p>
+        <button
+          type="submit"
+          value="SKICKA"
+          @click="getText(week)"
+        >SPARA</button>
+      </p>
 
+      <p>Vecka {{ week }}</p>
+
+
+    <textarea class="form-control" v-html="text"></textarea>
     <!-- <div class="question" v-for="question in questions" :key="question.key">
       <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p>
@@ -30,7 +42,7 @@
 import Nav from './Nav.vue'
 
 export default {
-  name: 'Report',
+  name: 'Reports',
   components: {
     Nav,
   },
@@ -38,14 +50,9 @@ export default {
     return {
       // questions: [],
       text: "",
-      week: this.$route.params.week
+      week: ""
     }
   },
-  watch: {
-  '$route.params.week': function (week) {
-      this.getText(week)
-  }
-},
   mounted() {
     this.getText(this.week);
   },
@@ -67,9 +74,6 @@ export default {
       });
     }
 }
-
-
-
   }
 
 </script>
@@ -85,6 +89,10 @@ export default {
 <style scoped>
 h2 {
   text-transform: uppercase;
+}
+
+textarea {
+    height: 500px;
 }
 
 .question {

@@ -8,6 +8,7 @@ import Me from '@/components/Me'
 import Report from '@/components/Report'
 import Registration from '@/components/Registration'
 import Login from '@/components/Login'
+import Addoredit from '@/components/Addoredit'
 
 Vue.use(Router)
 
@@ -67,6 +68,11 @@ export default new Router({
         path: '/login',
         name: 'Logga in',
         component: Login
+    },
+    {
+        path: '/addoredit',
+        name: 'Lägg till eller redigera',
+        component: Addoredit
     }
   ]
 })
