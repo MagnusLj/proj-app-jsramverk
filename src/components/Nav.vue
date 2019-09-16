@@ -30,8 +30,9 @@
         </a>
         <div class="dropdown-menu bg-info">
           <!-- <a class="dropdown-item" href="#">Link 1</a> -->
-          <router-link class="dropdown-item bg-info" to="/reports/week/1">kmom01</router-link>
-          <router-link class="dropdown-item bg-info" to="/reports/week/2">kmom02</router-link>
+          <router-link class="dropdown-item bg-info" to="/reports/week/1">Vecka 1</router-link>
+          <router-link class="dropdown-item bg-info" to="/reports/week/2">Vecka 2</router-link>
+          <router-link class="dropdown-item bg-info" to="/reports/week/3">Vecka 3</router-link>
         </div>
       </li>
 
