@@ -8,10 +8,7 @@
       <p>{{ question.answer }}</p> -->
 
       <form
-        id="theform"
         @submit="checkForm"
-        action="www.a.puff"
-        method="post"
         novalidate="true"
       >
 
@@ -119,12 +116,20 @@
           >
       </div>
 
-        <p>
+        <!-- <p>
           <input
             type="submit"
             value="SKICKA"
           >
+        </p> -->
+
+        <p>
+          <button
+          type="button"
+            @click="checkForm"
+          >SKICKADET</button>
         </p>
+
 
       </form>
 
@@ -141,7 +146,6 @@ export default {
     components: {
       Nav,
     },
-  el: '#theform',
   data: function() {
 return {
     heading: "Registrering",
@@ -188,11 +192,13 @@ else if (this.validDate(this.day, this.year)) {
   this.errors.push('Du måste ange ett riktigt födelsedatum.');
 }
       if (this.errors.length < 1) {
+        this.makeJSON();
         return true;
-      }
+    }
 
       e.preventDefault();
     },
+
     validEmail: function (email) {
       var re = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
@@ -206,7 +212,51 @@ else if (this.validDate(this.day, this.year)) {
         // this.errors.push('year');
         return true;
     }
-  }
+},
+
+    // makeJSON: function () {
+    //     let name = this.name;
+    //     let email = this.email;
+    //     let password = this.password1;
+    //     let day = this.day;
+    //     let month = this.month;
+    //     let year = this.year;
+    //     let bodyy = JSON.stringify({name:name, email:email, password:password,
+    //         day:day, month:month, year:year});
+    //     console.log(bodyy);
+    //     this.$router.push("/Login");
+    // }
+
+    makeJSON: function () {
+        let name = this.name;
+        let email = this.email;
+        let password = this.password1;
+        let day = parseInt(this.day);
+        let month = this.month;
+        let year = parseInt(this.year);
+        let bodyy = JSON.stringify({name:name, email:email, password:password,
+            day:day, month:month, year:year});
+        console.log(bodyy);
+        fetch('https://me-api.dreamsofliden.me/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({name:name, email:email, password:password,
+                day:day, month:month, year:year})
+        }).then((res) => res.json())
+        .then((data) => console.log(data))
+        .then(this.$router.push("/Login"))
+        .catch((err)=>console.log(err))
+
+
+
+    }
+
+
+
+
+
 
 
 

@@ -10,6 +10,7 @@ import Registration from '@/components/Registration'
 import Login from '@/components/Login'
 import Addoredit from '@/components/Addoredit'
 
+
 Vue.use(Router)
 
 // export default new Router({
