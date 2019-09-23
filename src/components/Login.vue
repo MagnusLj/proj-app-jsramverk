@@ -100,6 +100,10 @@
           >
       </div>
 
+      <p>Token: {{ getToken }}</p>
+      <p>Total Tv Count: {{ totalTvCount }}</p>
+       <p>Tocken: {{ tocken }}<br><br></p>
+
 
   <!-- </div> -->
 
@@ -148,10 +152,25 @@ return {
     year: null,
     password1: null,
     password2: null,
+    tocken: "",
     state: {
        message: 'Hello!'
      },
   };
+},
+
+
+computed:
+{
+//   compiledMarkdown: function () {
+//     return marked(this.text, { sanitize: true })
+// },
+totalTvCount () {
+  return this.$store.state.totalTvCount
+},
+getToken () {
+return this.$store.state.theToken
+},
 },
 
 // state: {
@@ -160,6 +179,21 @@ return {
 
 
   methods: {
+
+      setAToken(token) {
+        // Dispatch the action to buy a TV
+        this.$store.dispatch('setToken', this.tocken);
+        // console.log(this.tocken);
+        console.log("setAToken");
+      },
+
+      buyTwoTokens(tocken) {
+          console.log("Buy two tokens" + tocken);
+        // Dispatch the action to buy two TVs
+        this.$store.dispatch('removeToken', tocken)
+    },
+
+
     checkForm: function (e) {
       this.errors = [];
 
@@ -250,8 +284,10 @@ makeJSON: function () {
     .then((res) => res.json())
     .then(function(res) {
         // console.log(res.data.token);
-        that.state.message = res.data.token;
-        console.log(that.state.message);
+        that.tocken = res.data.token;
+        that.buyTwoTokens(that.tocken);
+        // that.setAToken(res.data.token);
+        // console.log(that.state.message);
         // setMessage(res.data.token);
         // console.log(this.getMessage());
         // console.log(this.state);
@@ -262,7 +298,11 @@ makeJSON: function () {
     })
     // .then(this.setMessage(res.data.token))
     .then(console.log("State message2"))
-    .then(console.log(that.getMessage()))
+    // .then(console.log(that.getMessage()))
+    .then(console.log("Tocken"))
+    .then(console.log(this.tocken))
+    .then(console.log(that.tocken))
+    .then(that.buyTwoTokens(that.tocken))
     // .then((data) => console.log(data))
     // .then(this.$router.push("/Login"))
     .catch((err)=>console.log(err))

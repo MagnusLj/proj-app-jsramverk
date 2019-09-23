@@ -27,6 +27,7 @@
 
       <p>Vecka {{ week }}</p>
       <p>Total count: {{ totalTvCount }} </p>
+      <p>The token: {{ getToken }} </p>
 
     <!-- <p style="white-space: pre-line;">{{ text }}</p> -->
 
@@ -65,8 +66,10 @@ export default {
   },
   totalTvCount () {
     return this.$store.state.totalTvCount
-  }
-
+},
+getToken () {
+  return this.$store.state.theToken
+},
   },
 
 

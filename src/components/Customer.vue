@@ -2,6 +2,7 @@
   <div class="customer">
     <h1>I'm a customer</h1>
     <p>I see {{ totalTvCount }} TVs!</p>
+    <p>I see {{ theToken }} token!</p>
     <p v-show="!totalTvCount">I can't buy any..</p>
     <button
       :disabled="!totalTvCount"
@@ -13,6 +14,10 @@
       @click="buyTwoTvs">
       Buy Two TVs
     </button>
+    <button
+      @click="buyTwoTokens">
+      Suck a token
+    </button>
   </div>
 </template>
 
@@ -22,7 +27,10 @@ export default {
   computed: {
     totalTvCount () {
       return this.$store.state.totalTvCount
-    }
+  },
+  theToken () {
+    return this.$store.state.theToken
+},
   },
   methods: {
     buyTv() {
@@ -32,7 +40,11 @@ export default {
     buyTwoTvs() {
       // Dispatch the action to buy two TVs
       this.$store.dispatch('removeTv', 2)
-    }
+  },
+  buyTwoTokens() {
+    // Dispatch the action to buy two TVs
+    this.$store.dispatch('removeToken', 2)
+}
   }
 }
 </script>
