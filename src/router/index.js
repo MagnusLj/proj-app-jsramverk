@@ -10,6 +10,7 @@ import Me from '@/components/Me'
 import Report from '@/components/Report'
 import Registration from '@/components/Registration'
 import Login from '@/components/Login'
+import Logout from '@/components/Logout'
 import Addoredit from '@/components/Addoredit'
 import Customer from '@/components/Customer'
 
@@ -75,6 +76,11 @@ export default new Router({
         path: '/login',
         name: 'Logga in',
         component: Login
+    },
+    {
+        path: '/logout',
+        name: 'Logga ut',
+        component: Logout
     },
     {
         path: '/addoredit',

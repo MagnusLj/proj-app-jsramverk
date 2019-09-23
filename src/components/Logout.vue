@@ -7,17 +7,17 @@
       <!-- <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p> -->
 
-      <form
+      <!-- <form
         @submit="checkForm"
         novalidate="true"
-      >
+      > -->
 
-        <p v-if="errors.length">
+        <!-- <p v-if="errors.length">
           <b>Vänligen fixa följande:</b>
           <ul>
             <li v-for="error in errors" :key="error">{{ error }}</li><br>
           </ul>
-        </p>
+        </p> -->
 
         <!-- <p>
           <label for="name">Namn<br></label>
@@ -32,7 +32,7 @@
       </div> -->
 
 
-        <p>
+        <!-- <p>
           <label for="email">Email<br></label>
       </p>
           <div class="form-group">
@@ -42,7 +42,7 @@
             type="email"
             name="email"
           >
-          </div>
+          </div> -->
 
 
         <!-- <div>
@@ -87,18 +87,18 @@
 
   </div> -->
 
-        <p>
+        <!-- <p>
           <label for="password1">Lösenord<br></label>
           </p>
-          <div class="form-group">
+          <div class="form-group"> -->
           <!-- <label for="password1" class="ittybittylabel">Minst 8 tecken</label> -->
-          <input
+          <!-- <input
             id="password1"
             v-model="password1"
             type="password"
             name="password1"
           >
-      </div>
+      </div> -->
 
       <!-- <p>Token: {{ getToken }}</p>
       <p>Total Tv Count: {{ totalTvCount }}</p>
@@ -119,14 +119,14 @@
           >
       </div> -->
 
-        <p>
+        <!-- <p>
           <button
             type="button"
             @click="checkForm"
-          >SKICKA</button>
-        </p>
+          >SKICKA DET</button>
+        </p> -->
 
-      </form>
+      <!-- </form> -->
 
     </div>
 </main>
@@ -138,7 +138,7 @@
 import Nav from './Nav.vue'
 
 export default {
-    name: "Login",
+    name: "Logout",
     components: {
       Nav,
     },
@@ -153,7 +153,7 @@ return {
     year: null,
     password1: null,
     password2: null,
-    tocken: "",
+    tocken: null,
     state: {
        message: 'Hello!'
      },
@@ -166,9 +166,9 @@ computed:
 //   compiledMarkdown: function () {
 //     return marked(this.text, { sanitize: true })
 // },
-totalTvCount () {
-  return this.$store.state.totalTvCount
-},
+// totalTvCount () {
+//   return this.$store.state.totalTvCount
+// },
 getToken () {
 return this.$store.state.theToken
 },
@@ -178,20 +178,30 @@ return this.$store.state.theToken
 //    message: 'Hello!'
 //  },
 
+mounted() {
+    // let that = this;
+  this.makeJSON()
+  // this.$router.push("/")
+  // .catch((err)=>console.log(err))
+  // .getToken();
+  // buyTwoTokens(null)
+// .then(this.$router.push("/"))
+//   .catch((err)=>console.log(err))
+},
 
   methods: {
 
-      setAToken(token) {
-        // Dispatch the action to buy a TV
-        this.$store.dispatch('setToken', this.tocken);
-        // console.log(this.tocken);
-        console.log("setAToken");
-      },
+      // setAToken(token) {
+      //   // Dispatch the action to buy a TV
+      //   this.$store.dispatch('setToken', this.tocken);
+      //   // console.log(this.tocken);
+      //   console.log("setAToken");
+      // },
 
-      buyTwoTokens(tocken) {
-          console.log("Buy two tokens" + tocken);
+      buyTwoTokens2(tocken) {
+          console.log("Buy two tokens " + tocken);
         // Dispatch the action to buy two TVs
-        this.$store.dispatch('removeToken', tocken)
+        this.$store.dispatch('removeToken2', "")
     },
 
 
@@ -251,17 +261,17 @@ return this.$store.state.theToken
 
 
 
-setMessage: function (token) {
-    this.state.message = token;
-    console.log("Message set")
-    // console.log(this.state.message);
-},
+// setMessage: function (token) {
+//     this.state.message = token;
+//     console.log("Message set")
+//     // console.log(this.state.message);
+// },
 
 
-getMessage: function () {
-    return this.state.message;
-    // console.log(this.state.message);
-},
+// getMessage: function () {
+//     return this.state.message;
+//     // console.log(this.state.message);
+// },
 
 
 
@@ -269,7 +279,10 @@ getMessage: function () {
 makeJSON: function () {
     let email = this.email;
     let password = this.password1;
+    this.buyTwoTokens2("");
     let that = this;
+
+    that.buyTwoTokens2("");
     that.state.message = "";
     let bodyy = JSON.stringify({email:email, password:password});
     console.log(bodyy);
@@ -285,8 +298,8 @@ makeJSON: function () {
     .then((res) => res.json())
     .then(function(res) {
         // console.log(res.data.token);
-        that.tocken = res.data.token;
-        that.buyTwoTokens(that.tocken);
+        // that.tocken = null;
+        that.buyTwoTokens2("");
         // that.setAToken(res.data.token);
         // console.log(that.state.message);
         // setMessage(res.data.token);
@@ -303,7 +316,7 @@ makeJSON: function () {
     .then(console.log("Tocken"))
     .then(console.log(this.tocken))
     .then(console.log(that.tocken))
-    .then(that.buyTwoTokens(that.tocken))
+    .then(that.buyTwoTokens2(""))
     // .then((data) => console.log(data))
     .then(this.$router.push("/"))
     .catch((err)=>console.log(err))

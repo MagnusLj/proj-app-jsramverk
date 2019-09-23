@@ -8,7 +8,7 @@ export default new Vuex.Store({
     totalTvCount: 10, // The TV inventory
     isLarryHappy: true,
     isJennyHappy: true,
-    theToken: 11
+    theToken: null
   },
 
   getters: {
@@ -29,6 +29,9 @@ export default new Vuex.Store({
 removeToken(state, amount) {
   state.theToken = amount
 },
+removeToken2(state, amount) {
+  state.theToken = null
+},
   },
 
   actions: {
@@ -47,6 +50,14 @@ removeToken(state, amount) {
       // If we enough TVs, ask Jenny to remove it
       context.commit('removeToken', amount)
     }
+},
+
+removeToken2(context, amount) {
+  // If we enough TVs, ask Jenny to remove it
+  if(context.state.theToken) {
+    // If we enough TVs, ask Jenny to remove it
+    context.commit('removeToken2', amount)
+  }
 },
 
   setToken(state, token) {

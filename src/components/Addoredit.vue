@@ -25,9 +25,9 @@
         >SPARA</button>
       </p>
 
-      <p>Vecka {{ week }}</p>
+      <!-- <p>Vecka {{ week }}</p>
       <p>Total count: {{ totalTvCount }} </p>
-      <p>The token: {{ getToken }} </p>
+      <p>The token: {{ getToken }} </p> -->
 
     <!-- <p style="white-space: pre-line;">{{ text }}</p> -->
 
