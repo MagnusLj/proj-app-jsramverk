@@ -26,7 +26,7 @@
       </p>
 
       <p>Vecka {{ week }}</p>
-      <!-- <p> {{ text }} </p> -->
+      <p>Total count: {{ totalTvCount }} </p>
 
     <!-- <p style="white-space: pre-line;">{{ text }}</p> -->
 
@@ -62,8 +62,30 @@ export default {
   computed: {
     compiledMarkdown: function () {
       return marked(this.text, { sanitize: true })
-    }
   },
+  totalTvCount () {
+    return this.$store.state.totalTvCount
+  }
+
+  },
+
+
+
+  // export default {
+  //   name: 'Customer',
+  //   computed: {
+  //     totalTvCount () {
+  //       return this.$store.state.totalTvCount
+  //     }
+  //   },
+  //   methods: {
+
+
+
+
+
+
+
   methods: {
 
     getText(week) {

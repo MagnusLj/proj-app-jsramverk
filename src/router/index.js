@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import Router from 'vue-router'
 import 'es6-promise/auto'
 import Me from '@/components/Me'
@@ -10,10 +11,13 @@ import Report from '@/components/Report'
 import Registration from '@/components/Registration'
 import Login from '@/components/Login'
 import Addoredit from '@/components/Addoredit'
+import Customer from '@/components/Customer'
 
 
 
 Vue.use(Router)
+
+Vue.use(Vuex)
 
 // export default new Router({
 //   routes: [
@@ -76,6 +80,11 @@ export default new Router({
         path: '/addoredit',
         name: 'Lägg till eller redigera',
         component: Addoredit
+    },
+    {
+        path: '/customer',
+        name: 'Hej och hå',
+        component: Customer
     }
   ]
 })
