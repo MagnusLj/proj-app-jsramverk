@@ -8,10 +8,7 @@
       <p>{{ question.answer }}</p> -->
 
       <form
-        id="theform"
         @submit="checkForm"
-        action="www.a.puff"
-        method="post"
         novalidate="true"
       >
 
@@ -119,10 +116,10 @@
       </div> -->
 
         <p>
-          <input
-            type="submit"
-            value="SKICKA"
-          >
+          <button
+            type="button"
+            @click="checkForm"
+          >SKICKA DET</button>
         </p>
 
       </form>
@@ -136,11 +133,10 @@
 import Nav from './Nav.vue'
 
 export default {
-    name: "Logga in",
+    name: "Login",
     components: {
       Nav,
     },
-  el: '#theform',
   data: function() {
 return {
     heading: "Logga in",
@@ -151,9 +147,18 @@ return {
     month: "",
     year: null,
     password1: null,
-    password2: null
+    password2: null,
+    state: {
+       message: 'Hello!'
+     },
   };
 },
+
+// state: {
+//    message: 'Hello!'
+//  },
+
+
   methods: {
     checkForm: function (e) {
       this.errors = [];
@@ -187,16 +192,17 @@ return {
 //   this.errors.push('Du måste ange ett riktigt födelsedatum.');
 // }
       if (this.errors.length < 1) {
+        this.makeJSON();
         return true;
       }
 
       e.preventDefault();
     },
+
     validEmail: function (email) {
       var re = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
-  }
-  ,
+  },
   validDate: function (day, year) {
     if (day > 31) {
         // this.errors.push('day');
@@ -205,8 +211,76 @@ return {
         // this.errors.push('year');
         return true;
     }
-  }
+},
 
+
+
+
+setMessage: function (token) {
+    this.state.message = token;
+    console.log("Message set")
+    // console.log(this.state.message);
+},
+
+
+getMessage: function () {
+    return this.state.message;
+    // console.log(this.state.message);
+},
+
+
+
+
+makeJSON: function () {
+    let email = this.email;
+    let password = this.password1;
+    let that = this;
+    that.state.message = "";
+    let bodyy = JSON.stringify({email:email, password:password});
+    console.log(bodyy);
+    // console.log(this.getMessage());
+    fetch('https://me-api.dreamsofliden.me/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email:email, password:password})
+    })
+
+    .then((res) => res.json())
+    .then(function(res) {
+        // console.log(res.data.token);
+        that.state.message = res.data.token;
+        console.log(that.state.message);
+        // setMessage(res.data.token);
+        // console.log(this.getMessage());
+        // console.log(this.state);
+        // this.setMessage(res.data.token);
+        // this.state = res.data.token;
+        console.log("State message");
+        // console.log(this.getMessage());
+    })
+    // .then(this.setMessage(res.data.token))
+    .then(console.log("State message2"))
+    .then(console.log(that.getMessage()))
+    // .then((data) => console.log(data))
+    // .then(this.$router.push("/Login"))
+    .catch((err)=>console.log(err))
+
+}
+
+
+// getText(week) {
+//   let that = this;
+//   that.text = "";
+//   fetch("https://me-api.dreamsofliden.me/reports/week/" + week)
+//   .then(function(response) {
+//       return response.json();
+//   })
+//   .then(function(result) {
+//       that.text = result.data.blahblah;
+//   });
+// }
 
 
   }

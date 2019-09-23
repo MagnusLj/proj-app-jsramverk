@@ -214,19 +214,6 @@ else if (this.validDate(this.day, this.year)) {
     }
 },
 
-    // makeJSON: function () {
-    //     let name = this.name;
-    //     let email = this.email;
-    //     let password = this.password1;
-    //     let day = this.day;
-    //     let month = this.month;
-    //     let year = this.year;
-    //     let bodyy = JSON.stringify({name:name, email:email, password:password,
-    //         day:day, month:month, year:year});
-    //     console.log(bodyy);
-    //     this.$router.push("/Login");
-    // }
-
     makeJSON: function () {
         let name = this.name;
         let email = this.email;

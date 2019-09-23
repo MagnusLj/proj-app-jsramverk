@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import 'es6-promise/auto'
 import Me from '@/components/Me'
 // import Me2 from '@/components/Me2'
 // import Report from '@/components/Report'
@@ -9,6 +10,7 @@ import Report from '@/components/Report'
 import Registration from '@/components/Registration'
 import Login from '@/components/Login'
 import Addoredit from '@/components/Addoredit'
+
 
 
 Vue.use(Router)
