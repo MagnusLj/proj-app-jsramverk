@@ -18,11 +18,13 @@
       </div>
 
       <p>
+          Du kan skriva med Markdown<br><br>
         <button
           type="submit"
           value="SKICKA"
           @click="deleteText(week)"
         >SPARA</button>
+        <br><br>
       </p>
 
       <!-- <p>Vecka {{ week }}</p>
@@ -62,7 +64,7 @@ export default {
   },
   computed: {
     compiledMarkdown: function () {
-      return marked(this.text, { sanitize: true })
+      return marked(this.text)
   },
   totalTvCount () {
     return this.$store.state.totalTvCount
@@ -105,6 +107,7 @@ getToken () {
 
 
   deleteText(week) {
+      let token = this.$store.state.theToken;
       console.log('deleteText');
       let kmom = parseInt(week);
       console.log(kmom);
@@ -113,7 +116,8 @@ getToken () {
       fetch('https://me-api.dreamsofliden.me', {
           method: 'DELETE',
           headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'x-access-token': token
           },
           body: JSON.stringify({kmom:kmom})
       }).then((res) => res.json())
@@ -126,6 +130,7 @@ getToken () {
 
     postText(week) {
         console.log('postText');
+        let token = this.$store.state.theToken;
         let blahblah = this.text;
         let type = 'report_text';
         let kmom = parseInt(week);
@@ -135,7 +140,8 @@ getToken () {
         fetch('https://me-api.dreamsofliden.me', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': token
             },
             body: JSON.stringify({blahblah:blahblah, type:type, kmom:kmom})
         }).then((res) => res.json())

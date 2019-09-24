@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     compiledMarkdown: function () {
-      return marked(this.text, { sanitize: true })
+      return marked(this.text)
     }
   },
   methods: {
