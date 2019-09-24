@@ -117,12 +117,15 @@
           <router-link class="dropdown-item bg-info" to="/reports/week/1">Vecka 1</router-link>
           <router-link class="dropdown-item bg-info" to="/reports/week/2">Vecka 2</router-link>
           <router-link class="dropdown-item bg-info" to="/reports/week/3">Vecka 3</router-link>
+          <router-link class="dropdown-item bg-info" to="/reports/week/4">Vecka 4</router-link>
+          <router-link class="dropdown-item bg-info" to="/reports/week/5">Vecka 5</router-link>
+          <router-link class="dropdown-item bg-info" to="/reports/week/6">Vecka 6</router-link>
         </div>
       </li>
 
-      <!-- <li class="nav-item">
+      <li v-if="!this.getToken" class="nav-item">
         <router-link class="nav-link" to="/registration">Ny användare</router-link>
-      </li> -->
+      </li>
 
       <li v-if="this.getToken" class="nav-item">
         <router-link class="nav-link" to="/addoredit">Lägg till eller redigera</router-link>

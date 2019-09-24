@@ -127,7 +127,7 @@
           <button
           type="button"
             @click="checkForm"
-          >SKICKADET</button>
+          >SKICKA</button>
         </p>
 
 

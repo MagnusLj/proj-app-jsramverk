@@ -181,12 +181,12 @@ return this.$store.state.theToken
 
   methods: {
 
-      setAToken(token) {
-        // Dispatch the action to buy a TV
-        this.$store.dispatch('setToken', this.tocken);
-        // console.log(this.tocken);
-        console.log("setAToken");
-      },
+      // setAToken(token) {
+      //   // Dispatch the action to buy a TV
+      //   this.$store.dispatch('setToken', this.tocken);
+      //   // console.log(this.tocken);
+      //   console.log("setAToken");
+      // },
 
       buyTwoTokens(tocken) {
           console.log("Buy two tokens" + tocken);
@@ -271,8 +271,8 @@ makeJSON: function () {
     let password = this.password1;
     let that = this;
     that.state.message = "";
-    let bodyy = JSON.stringify({email:email, password:password});
-    console.log(bodyy);
+    // let bodyy = JSON.stringify({email:email, password:password});
+    // console.log(bodyy);
     // console.log(this.getMessage());
     fetch('https://me-api.dreamsofliden.me/login', {
         method: 'POST',
@@ -294,7 +294,7 @@ makeJSON: function () {
         // console.log(this.state);
         // this.setMessage(res.data.token);
         // this.state = res.data.token;
-        console.log("State message");
+        // console.log("State message");
         // console.log(this.getMessage());
     })
     // .then(this.setMessage(res.data.token))
