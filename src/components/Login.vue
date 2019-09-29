@@ -326,6 +326,45 @@ makeJSON: function () {
 
   }
 }
+
+
+
+
+// makeJSON: function () {
+//     let email = this.email;
+//     let password = this.password1;
+//     let that = this;
+//     that.state.message = "";
+//     fetch('https://me-api.min_hackade_sida.me/login', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({email:email, password:password})
+//     })
+//
+//     .then((res) => res.json())
+//     .then(function(res) {
+//         that.tocken = res.data.token;
+//         that.buyTwoTokens(that.tocken);
+//     })
+//     .then(that.buyTwoTokens(that.tocken))
+//     .then(this.$router.push("/"))
+//     .catch((err)=>console.log(err))
+//
+// }
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

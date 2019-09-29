@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "npm run build && rsync -av dist/* deploy@dreamsofliden.me:/var/www/me-app.dreamsofliden.me/html/"
+    "deploy": "npm run build && rsync -av dist/* deploy@dreamsofliden.me:/var/www/me-app.dreamsofliden.me/html/",
+    "start": "node node_modules/http-server/bin/http-server -p 8081 src",
+    "test": "mocha --timeout 10000 test/**/*.js"
   },
   "dependencies": {
     "es6-promise": "^4.2.8",
@@ -23,7 +25,10 @@
     "eslint-plugin-vue": "^5.2.3",
     "eslint-utils": ">=1.4.1",
     "lodash.defaultsdeep": ">=4.6.1",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "mocha": "^4.1.0",
+    "selenium-webdriver": "^3.6.0",
+    "http-server": "^0.11.1"
   },
   "eslintConfig": {
     "root": true,
