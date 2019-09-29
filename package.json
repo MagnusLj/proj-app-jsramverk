@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "deploy": "npm run build && rsync -av dist/* deploy@dreamsofliden.me:/var/www/me-app.dreamsofliden.me/html/",
-    "start": "node node_modules/http-server/bin/http-server -p 8081 src",
+    "start": "vue-cli-service serve",
     "test": "PORT=8081 npm start & mocha --timeout 10000 test/**/*.js"
   },
   "dependencies": {
