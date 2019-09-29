@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/MagnusLj/jsramverk.svg?branch=master)](https://travis-ci.org/MagnusLj/jsramverk) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/MagnusLj/jsramverk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/MagnusLj/jsramverk/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/MagnusLj/jsramverk/badges/build.png?b=master)](https://scrutinizer-ci.com/g/MagnusLj/jsramverk/build-status/master)
+
 # me-vue
 
 ## Project setup
