@@ -146,7 +146,9 @@ getToken () {
             body: JSON.stringify({blahblah:blahblah, type:type, kmom:kmom})
         }).then((res) => res.json())
         .then((data) => console.log(data))
+        .then(this.$router.push("/"))
         .catch((err)=>console.log(err))
+
 
 
     }
