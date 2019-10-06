@@ -8,6 +8,7 @@ import Me from '@/components/Me'
 // import Reports1 from '@/components/Reports1'
 // import Reports2 from '@/components/Reports2'
 import Report from '@/components/Report'
+import Chat from '@/components/Chat'
 import Registration from '@/components/Registration'
 import Login from '@/components/Login'
 import Logout from '@/components/Logout'
@@ -61,6 +62,11 @@ export default new Router({
         path: '/reports/week/:week',
         name: 'Redovisning',
         component: Report
+    },
+    {
+        path: '/chat',
+        name: 'Chat',
+        component: Chat
     },
     // {
     //     path: '/reports/week/:week',

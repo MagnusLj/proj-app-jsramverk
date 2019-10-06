@@ -123,6 +123,10 @@
         </div>
       </li>
 
+      <li class="nav-item">
+        <router-link class="nav-link" to="/chat">Chat</router-link>
+      </li>
+
       <li v-if="!this.getToken" class="nav-item">
         <router-link class="nav-link" to="/registration">Ny användare</router-link>
       </li>
