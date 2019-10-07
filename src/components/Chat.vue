@@ -11,7 +11,7 @@
               <h3>Chattrummet</h3>
               <hr>
           </div> -->
-          <div class="card-body_2">
+          <div class="card-body_2" v-chat-scroll>
               <div class="messages" v-for="(msg, index) in messages" :key="index">
                   <p><span class="font-weight-bold">{{ msg.user }}: </span>{{ msg.message }}</p>
               </div>
@@ -20,11 +20,12 @@
       <div class="card-footer">
           <p v-if="!this.user2">Du måste välja ett chattnamn för att kunna chatta</p>
           <p v-else>Chatta så det ryker, {{ user2 }}!</p>
+          <!-- <p>Tid: {{ time2 }}</p> -->
           <form @submit.prevent="sendMessage">
-              <div class="form-group">
+              <!-- <div class="form-group">
                   <label for="user2">Användare:</label>
                   <input type="text" v-model="user2" class="form-control">
-              </div>
+              </div> -->
               <div class="form-group pb-3">
                   <label for="message">Meddelande:</label>
                   <input type="text" v-model="message" class="form-control">
@@ -91,15 +92,19 @@ export default {
             user2: '',
             message: '',
             messages: [],
+            time2: '',
             socket : io('localhost:3000')
         }
+    },
+    created() {
+        setInterval(this.getNow, 1000);
     },
     methods: {
         sendMessage(e) {
             e.preventDefault();
 
             this.socket.emit('SEND_MESSAGE', {
-                user: this.user,
+                user: this.time2 + " " + this.user,
                 message: this.message
             });
             this.message = ''
@@ -111,6 +116,21 @@ export default {
 
         userToUser2() {
             this.user2 = this.user;
+            this.socket.emit('SEND_MESSAGE', {
+                user: this.time2 + " " + this.user2,
+                message: this.user2 + " har anslutit till chatten."
+            });
+        },
+
+        getNow () {
+            const today = new Date();
+            var minutes = today.getMinutes()
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            const time = today.getHours() + ":" + minutes;
+            this.time2 = time;
+            // console.log(minutes.length);
         }
 
 
@@ -134,7 +154,7 @@ h2 {
 }
 
 .card-body_2 {
-    height: 10em;
+    height: 17em;
     overflow-y:scroll;
 }
 

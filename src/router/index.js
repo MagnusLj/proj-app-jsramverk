@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Router from 'vue-router'
 import 'es6-promise/auto'
+import VueChatScroll from 'vue-chat-scroll'
 import Me from '@/components/Me'
 // import Me2 from '@/components/Me2'
 // import Report from '@/components/Report'
@@ -20,6 +21,8 @@ import Customer from '@/components/Customer'
 Vue.use(Router)
 
 Vue.use(Vuex)
+
+Vue.use(VueChatScroll)
 
 // export default new Router({
 //   routes: [
