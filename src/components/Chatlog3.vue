@@ -2,8 +2,8 @@
 <main>
     <Nav />
     <div class="wrapper">
-    <br><h2><br>Me</h2>
-    <p>{{ text }}</p>
+    <br><h2><br>Chattlogg</h2>
+    <p>{{ message }}</p>
     </div>
 </main>
 </template>
@@ -28,14 +28,15 @@ export default {
   methods: {
     getMe() {
       let that = this;
-      fetch("https://me-api.dreamsofliden.me")
-      // fetch("localhost:9001/")
+      // fetch("https://me-api.dreamsofliden.me")
+      fetch("http://localhost:3000/chatlog")
       .then(function(response) {
           console.log("B")
-          return response.json();
+          return response;
       })
       .then(function(result) {
-          that.text = result.data.blahblah;
+          console.log(result);
+          that.text = result;
       });
     }
   }

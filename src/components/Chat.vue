@@ -93,7 +93,7 @@ export default {
             message: '',
             messages: [],
             time2: '',
-            // socket : io('localhost:3000')
+            // socket : io('http://localhost:3000')
             socket : io('https://socket-server.dreamsofliden.me')
         }
     },

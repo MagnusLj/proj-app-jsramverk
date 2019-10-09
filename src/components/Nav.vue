@@ -124,7 +124,11 @@
       </li>
 
       <li class="nav-item">
-        <router-link class="nav-link" to="/chat">Chat</router-link>
+        <router-link class="nav-link" to="/chat">Chatt</router-link>
+      </li>
+
+      <li class="nav-item">
+        <router-link class="nav-link" to="/chatlog">Chattlogg</router-link>
       </li>
 
       <li v-if="!this.getToken" class="nav-item">

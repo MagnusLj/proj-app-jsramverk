@@ -10,6 +10,7 @@ import Me from '@/components/Me'
 // import Reports2 from '@/components/Reports2'
 import Report from '@/components/Report'
 import Chat from '@/components/Chat'
+import Chatlog from '@/components/Chatlog'
 import Registration from '@/components/Registration'
 import Login from '@/components/Login'
 import Logout from '@/components/Logout'
@@ -70,6 +71,11 @@ export default new Router({
         path: '/chat',
         name: 'Chat',
         component: Chat
+    },
+    {
+        path: '/chatlog',
+        name: 'Chatlog',
+        component: Chatlog
     },
     // {
     //     path: '/reports/week/:week',
