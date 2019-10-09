@@ -69,7 +69,7 @@ export default {
     getLog() {
       console.log("A");
       let that = this;
-      fetch("https://socket-server.dreamsofliden.me")
+      fetch("https://socket-server.dreamsofliden.me/chatlog")
       // fetch("http://localhost:3000/chatlog")
       .then(function(response) {
           console.log("B");
