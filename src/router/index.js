@@ -4,8 +4,7 @@ import Router from 'vue-router'
 import 'es6-promise/auto'
 import VueChatScroll from 'vue-chat-scroll'
 
-// import Rickshaw from 'rickshaw';
-// import 'rickshaw/rickshaw.min.css';
+// import PureVueChart from 'pure-vue-chart';
 
 import Me from '@/components/Me'
 // import Me2 from '@/components/Me2'
