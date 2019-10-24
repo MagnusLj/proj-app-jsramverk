@@ -2,7 +2,7 @@
 <main>
     <Nav />
     <div class="wrapper">
-    <br><h2><br>Me</h2>
+    <br><h2><br>Hem</h2>
     <p>{{ text }}</p>
     </div>
 </main>
@@ -19,17 +19,16 @@ export default {
   },
   data() {
     return {
-        text: ""
+        text: "Hej, här kan du handla frukt om du är inloggad. Har du inget konto måste du registrera dig först."
     }
   },
   mounted() {
-    this.getMe();
+    // this.getMe();
   },
   methods: {
     getMe() {
       let that = this;
       fetch("https://me-api.dreamsofliden.me")
-      // fetch("localhost:9001/")
       .then(function(response) {
           console.log("B")
           return response.json();

@@ -3,13 +3,17 @@ import Vuex from 'vuex'
 import Router from 'vue-router'
 import 'es6-promise/auto'
 import VueChatScroll from 'vue-chat-scroll'
+
+// import Rickshaw from 'rickshaw';
+// import 'rickshaw/rickshaw.min.css';
+
 import Me from '@/components/Me'
 // import Me2 from '@/components/Me2'
 // import Report from '@/components/Report'
 // import Reports1 from '@/components/Reports1'
 // import Reports2 from '@/components/Reports2'
 import Report from '@/components/Report'
-import Chat from '@/components/Chat'
+// import Chat from '@/components/Chat'
 import Chatlog from '@/components/Chatlog'
 import Registration from '@/components/Registration'
 import Login from '@/components/Login'
@@ -25,30 +29,6 @@ Vue.use(Vuex)
 
 Vue.use(VueChatScroll)
 
-// export default new Router({
-//   routes: [
-//     {
-//         path: '/',
-//         name: 'Me',
-//         component: Me
-//     },
-//     {
-//         path: '/reports/week/:kmom',
-//         name: 'Redovisning',
-//         component: Report
-//     },
-// {
-//     path: '/registration',
-//     name: 'Registrering',
-//     component: Registration
-// },
-// {
-//     path: '/login',
-//     name: 'Logga in',
-//     component: Login
-// }
-//   ]
-// })
 
 export default new Router({
   routes: [
@@ -67,11 +47,11 @@ export default new Router({
         name: 'Redovisning',
         component: Report
     },
-    {
-        path: '/chat',
-        name: 'Chat',
-        component: Chat
-    },
+    // {
+    //     path: '/chat',
+    //     name: 'Chat',
+    //     component: Chat
+    // },
     {
         path: '/chatlog',
         name: 'Chatlog',

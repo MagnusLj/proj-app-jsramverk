@@ -3,6 +3,7 @@
     <Nav />
     <div class="wrapper">
     <br><h2><br>{{ heading }}</h2>
+    <p>Registrera dig här för att handla frukt</p><br>
     <!-- <div class="question" v-for="question in questions" :key="question.key"> -->
       <!-- <p><strong>{{ question.question }}</strong></p>
       <p>{{ question.answer }}</p> -->

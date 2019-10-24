@@ -274,7 +274,17 @@ makeJSON: function () {
     // let bodyy = JSON.stringify({email:email, password:password});
     // console.log(bodyy);
     // console.log(this.getMessage());
-    fetch('https://me-api.dreamsofliden.me/login', {
+
+    //Låt stå!
+    // fetch('https://me-api.dreamsofliden.me/login', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({email:email, password:password})
+    // })
+
+    fetch('http://localhost:5333/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -311,57 +321,9 @@ makeJSON: function () {
 }
 
 
-// getText(week) {
-//   let that = this;
-//   that.text = "";
-//   fetch("https://me-api.dreamsofliden.me/reports/week/" + week)
-//   .then(function(response) {
-//       return response.json();
-//   })
-//   .then(function(result) {
-//       that.text = result.data.blahblah;
-//   });
-// }
-
 
   }
 }
-
-
-
-
-// makeJSON: function () {
-//     let email = this.email;
-//     let password = this.password1;
-//     let that = this;
-//     that.state.message = "";
-//     fetch('https://me-api.min_hackade_sida.me/login', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({email:email, password:password})
-//     })
-//
-//     .then((res) => res.json())
-//     .then(function(res) {
-//         that.tocken = res.data.token;
-//         that.buyTwoTokens(that.tocken);
-//     })
-//     .then(that.buyTwoTokens(that.tocken))
-//     .then(this.$router.push("/"))
-//     .catch((err)=>console.log(err))
-//
-// }
-
-
-
-
-
-
-
-
-
 
 
 

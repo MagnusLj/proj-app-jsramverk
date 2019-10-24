@@ -1,168 +1,180 @@
 <template>
-<main>
-    <Nav />
-    <div class="wrapper">
-    <br><h2><br>Chattlogg</h2>
-    <!-- <p>{{ message}}</p> -->
+    <main>
+        <Nav />
+        <div class="wrapper">
+        <br><h2><br>Chattrum</h2>
+        <p> {{ name1 }} : {{ price1 }} </p>
+        <p> {{ name2 }} : {{ price2 }} </p>
+        <p> {{ name3 }} : {{ price3 }} </p>
 
-    <!-- <div class="form-group">
-    <input
-      id="week"
-      v-model="week"
-      type="number"
-      name="week"
-      value="theweek"
-      @input="getText(week)"
-    >
-    </div> -->
+  <div class="card mt-3">
+      <div class="card-body">
+          <!-- <div class="card-title">
+              <h3>Chattrummet</h3>
+              <hr>
+          </div> -->
+          <div class="card-body_2" v-chat-scroll>
+              <!-- <div class="messages" v-for="(msg, index) in messages" :key="index">
+                  <p><span class="font-weight-bold">{{ msg[0].name }}: </span>{{ msg[0].startingPoint }}</p>
+              </div> -->
+          </div>
+      </div>
+      <div class="card-footer">
+          <p v-if="!this.user2">Du måste välja ett chattnamn för att kunna chatta</p>
+          <p v-else>Chatta så det ryker, {{ user2 }}!</p>
+          <!-- <p>Tid: {{ time2 }}</p> -->
+          <form @submit.prevent="sendMessage">
+              <!-- <div class="form-group">
+                  <label for="user2">Användare:</label>
+                  <input type="text" v-model="user2" class="form-control">
+              </div> -->
+              <div class="form-group pb-3">
+                  <label for="message">Meddelande:</label>
+                  <input type="text" v-model="message" class="form-control">
+              </div>
+              <button type="submit" v-if="!this.user2" class="btn btn-success" disabled>Skicka</button> <button type="submit" v-else class="btn btn-success">Skicka</button> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Välj namn</button>
+          </form>
+      </div>
+  </div>
+  </div>
 
+  <!-- Trigger the modal with a button -->
+  <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
 
-    <!-- Tillfälligt bortkommenterat -->
-    <div class="card-body_2" v-chat-scroll>
-        <div class="messages" v-for="(msg, index) in message" :key="index">
-            <p><span class="font-weight-bold">{{ msg.user }}: </span>{{ msg.message }}</p>
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <!-- <h4 class="modal-title">Modal Header</h4> -->
         </div>
+        <div class="modal-body">
+          <!-- <p>Some text in the modal.</p> -->
+          <label for="user">Chattnamn&nbsp;&nbsp;</label>
+          <input
+            id="user"
+            v-model="user"
+            type="text"
+            name="user"
+          >
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" @click="userToUser2">Spara</button>
+        </div>
+      </div>
+
     </div>
+  </div>
 
 
 
 
 
 
-    <!-- <div class="question" v-for="question in questions" :key="question.key">
-      <p><strong>{{ question.question }}</strong></p>
-      <p>{{ question.answer }}</p>
-    </div> -->
-    </div>
-</main>
-
+  </main>
 </template>
 
+
+
 <script>
-import Nav from './Nav.vue'
-
+import io from 'socket.io-client';
+import Nav from './Nav.vue';
 export default {
-  name: 'Chatlog',
-  components: {
-    Nav,
-  },
-  data() {
-    return {
-      // questions: [],
-      user: '',
-      user2: '',
-      message: '',
-      messages: [],
-      text: ""
-      // week: this.$route.params.week
-    }
-  },
-  // watch: {
-  // '$route.params.week': function (week) {
-  //     this.getText(week)
-  // }
-// },
-  mounted() {
-    this.getLog();
-  },
-  methods: {
-    getLog() {
-      console.log("A");
-      let that = this;
-      fetch("https://socket-server.dreamsofliden.me/chatlog")
-      // fetch("http://localhost:3000/chatlog")
-      .then(function(response) {
-          console.log("B");
-          return response.json();
-          })
-          .then(function(result) {
-              console.log("X");
-              console.log(result);
-              // that.message = result.message;
-              console.log(result[0].user);
-              console.log(result[0].message);
-              that.message = result;
-              // console.log(result[0]);
-          });
+    name: 'Chat',
+    props: { },
+    components: {
+        Nav,
+    },
+    data() {
+        return {
+            name1: '',
+            name2: '',
+            name3: '',
+            price: '',
+            user: '',
+            user2: '',
+            message: '',
+            messages: [],
+            time2: '',
+            socket : io('http://localhost:3333')
+            //socket : io('https://socket-server.dreamsofliden.me')
+        }
+    },
+    created() {
+        setInterval(this.getNow, 1000);
+    },
+    methods: {
+        sendMessage(e) {
+            e.preventDefault();
 
-    }
+            this.socket.emit('SEND_MESSAGE', {
+                user: this.time2 + " " + this.user,
+                message: this.message
+            });
+            this.message = ''
+        },
+
+        openModal() {
+                this.toggleModal = true;
+    },
+
+        userToUser2() {
+            this.user2 = this.user;
+            this.socket.emit('SEND_MESSAGE', {
+                user: this.time2 + " " + this.user2,
+                message: this.user2 + " har anslutit till chatten."
+            });
+        },
+
+        getNow () {
+            const today = new Date();
+            var minutes = today.getMinutes()
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            const time = today.getHours() + ":" + minutes;
+            this.time2 = time;
+            // console.log(minutes.length);
+        }
 
 
-
+    },
     // mounted() {
-    //   this.getMe();
-    // },
-    // methods: {
-    //   getMe() {
-    //     let that = this;
-    //     fetch("https://me-api.dreamsofliden.me")
-    //     // fetch("localhost:9001/")
-    //     .then(function(response) {
-    //         console.log("B")
-    //         return response.json();
-    //     })
-    //     .then(function(result) {
-    //         that.text = result.data.blahblah;
+    //     this.socket.on('MESSAGE', (data) => {
+    //         this.messages = [...this.messages, data];
+    //         // you can also do this.messages.push(data)
     //     });
-    //   }
+    //     this.openModal();
     // }
+    mounted() {
+        this.socket.on('stocks', (cakes) => {
+            console.log(cakes[0].name);
+            console.log(cakes[0].startingPoint);
+            // this.messages = [...this.messages, cakes];
+            this.name1 = cakes[0].name;
+            this.price1 = cakes[0].startingPoint;
 
+            this.name2 = cakes[1].name;
+            this.price2 = cakes[1].startingPoint;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // methods: {
-    //   getMe() {
-    //     let that = this;
-    //     fetch("https://me-api.dreamsofliden.me")
-    //     // fetch("localhost:9001/")
-    //     .then(function(response) {
-    //         return response.json();
-    //     })
-    //     .then(function(result) {
-    //         that.text = result.data.blahblah;
-    //     });
-    //   }
-
-
-
-
-
-
-
-
-
+            this.name3 = cakes[2].name;
+            this.price3 = cakes[2].startingPoint;
+            // you can also do this.messages.push(data)
+        });
+        this.openModal();
+    }
 }
-
-
-
-  }
-
 </script>
-
-
-
-
-
-
-
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 h2 {
   text-transform: uppercase;
+    /* margin: 0 0.6em; */
 }
 
 .card-body_2 {
@@ -170,7 +182,8 @@ h2 {
     overflow-y:scroll;
 }
 
-.question {
-  margin-bottom: 2em;
+.btn-info {
+    float: right
 }
-</style>
+
+</style> -->
