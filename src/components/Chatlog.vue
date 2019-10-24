@@ -3,7 +3,7 @@
         <Nav />
         <div class="wrapper">
         <br><h2><br>Chattrum</h2>
-        <p> {{ name1 }} : {{ price1 }} </p>
+        <p>  {{ name1 }} : {{ price1 }} </p>
         <p> {{ name2 }} : {{ price2 }} </p>
         <p> {{ name3 }} : {{ price3 }} </p>
 
@@ -93,7 +93,9 @@ export default {
             name1: '',
             name2: '',
             name3: '',
-            price: '',
+            price1: '',
+            price2: '',
+            price3: '',
             user: '',
             user2: '',
             message: '',
@@ -150,18 +152,18 @@ export default {
     //     this.openModal();
     // }
     mounted() {
-        this.socket.on('stocks', (cakes) => {
-            console.log(cakes[0].name);
-            console.log(cakes[0].startingPoint);
-            // this.messages = [...this.messages, cakes];
-            this.name1 = cakes[0].name;
-            this.price1 = cakes[0].startingPoint;
+        this.socket.on('stocks', (fruits) => {
+            console.log(fruits[0].name);
+            console.log(fruits[0].startingPoint);
+            // this.messages = [...this.messages, fruits];
+            this.name1 = fruits[0].name;
+            this.price1 = Math.round(fruits[0].startingPoint * 100) / 100;
 
-            this.name2 = cakes[1].name;
-            this.price2 = cakes[1].startingPoint;
+            this.name2 = fruits[1].name;
+            this.price2 = Math.round(fruits[1].startingPoint * 100) / 100;
 
-            this.name3 = cakes[2].name;
-            this.price3 = cakes[2].startingPoint;
+            this.name3 = fruits[2].name;
+            this.price3 = Math.round(fruits[2].startingPoint * 100) / 100;
             // you can also do this.messages.push(data)
         });
         this.openModal();
