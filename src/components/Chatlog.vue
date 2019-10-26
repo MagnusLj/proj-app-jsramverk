@@ -271,13 +271,18 @@ export default {
       console.log("errors.length: " + this.errors.length);
         if (this.errors.length < 1) {
           this.count();
+          // .then(function() {
+              this.makeJSON();
+          // })
           return true;
         }
 
         e.preventDefault();
       },
 
-
+  //     .then(function(result) {
+  //         return stuff.storeUser(res, body, result)
+  // })
 
 
 
@@ -334,9 +339,13 @@ count: function () {
 
   makeJSON: function () {
       let email = this.email;
-      let password = this.password1;
-      let that = this;
-      that.state.message = "";
+      // let password = this.password1;
+      let apples = this.apples;
+      let pears = this.pears;
+      let bananas = this.bananas;
+      let balance = this.balance;
+      // let that = this;
+      // that.state.message = "";
 
       //Låt stå!
       // fetch('https://me-api.dreamsofliden.me/login', {
@@ -347,25 +356,27 @@ count: function () {
       //     body: JSON.stringify({email:email, password:password})
       // })
 
-      fetch('http://localhost:5333/login', {
+      fetch('http://localhost:5333/updateaccount', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify({email:email, password:password})
+          body: JSON.stringify({email:email, apples:apples, pears:pears, bananas:bananas,
+          balance:balance})
       })
 
       .then((res) => res.json())
       .then(function(res) {
-          that.tocken = res.data.token;
-          that.buyTwoTokens(that.tocken);
+          console.log(res)
+          // that.tocken = res.data.token;
+          // that.buyTwoTokens(that.tocken);
       })
       // .then(console.log("State message2"))
       // .then(console.log("Tocken"))
       // .then(console.log(this.tocken))
       // .then(console.log(that.tocken))
-      .then(that.buyTwoTokens(that.tocken))
-      .then(this.$router.push("/"))
+      // .then(that.buyTwoTokens(that.tocken))
+      // .then(this.$router.push("/"))
       .catch((err)=>console.log(err))
 
   },

@@ -316,7 +316,7 @@ makeJSON: function () {
 
     .then((res) => res.json())
     .then(function(res) {
-        // console.log(res.data.token);
+        console.log(res);
         // that.tocken = null;
         that.buyTwoTokens2("");
         that.buyTwoEmails2("");
