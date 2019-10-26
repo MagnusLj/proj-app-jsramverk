@@ -45,48 +45,6 @@
           </div>
 
 
-        <!-- <div>
-            <p>
-            <label for="birthday">Födelsedatum<br></label>
-        </p>
-            <div class="form-group">
-            <label for="day" class="ittybittylabel">Dag</label>
-            <input id="day" v-model="day" type="number" name="day">
-            </div>
-
-
-
-
-<div class="form-group">
-<label for="month" class="ittybittylabel">Månad</label>
-          <select
-            id="month"
-            v-model="month"
-            name="month"
-          >
-
-            <option value="januari">januari</option>
-            <option value="februari">februari</option>
-            <option value="mars">mars</option>
-            <option value="april">april</option>
-            <option value="maj">maj</option>
-            <option value="juni">juni</option>
-            <option value="juli">juli</option>
-            <option value="augusti">augusti</option>
-            <option value="september">september</option>
-            <option value="oktober">oktober</option>
-            <option value="november">november</option>
-            <option value="december">december</option>
-          </select>
-          </div>
-
-          <div class="form-group">
-          <label for="year" class="ittybittylabel">År</label>
-          <input id="year" v-model="year" type="number" name="year">
-      </div>
-
-  </div> -->
-
         <p>
           <label for="password1">Lösenord<br></label>
           </p>

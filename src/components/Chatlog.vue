@@ -117,27 +117,6 @@
         </div>
 
 
-        <!-- </div> -->
-
-          <!-- <p>
-            <label for="password2">Lösenord igen<br></label>
-            </p>
-            <div class="form-group">
-            <input
-              id="password2"
-              v-model="password2"
-              type="password"
-              name="password2"
-            >
-        </div> -->
-
-          <!-- <p>
-            <input
-              type="submit"
-              value="SKICKA"
-            >
-          </p> -->
-
           <p>
             <button
             type="button"
@@ -149,76 +128,12 @@
         </form>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <p>1: {{ name1 }} : {{ price1 }} </p>
         <p>2: {{ name2 }} : {{ price2 }} </p>
         <p>3: {{ name3 }} : {{ price3 }} </p>
 
-  <!-- <div class="card mt-3">
-      <div class="card-body">
-          <div class="card-body_2" v-chat-scroll>
-          </div>
-      </div>
-      <div class="card-footer">
-          <p v-if="!this.user2">Du måste välja ett chattnamn för att kunna chatta</p>
-          <p v-else>Chatta så det ryker, {{ user2 }}!</p>
-          <form @submit.prevent="sendMessage">
-              <div class="form-group pb-3">
-                  <label for="message">Meddelande:</label>
-                  <input type="text" v-model="message" class="form-control">
-              </div>
-              <button type="submit" v-if="!this.user2" class="btn btn-success" disabled>Skicka</button> <button type="submit" v-else class="btn btn-success">Skicka</button> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Välj namn</button>
-          </form>
-      </div>
-  </div> -->
+
   </div>
-
-  <!-- Trigger the modal with a button -->
-  <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
-
-  <!-- Modal -->
-  <!-- <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        </div>
-        <div class="modal-body">
-
-          <label for="user">Chattnamn&nbsp;&nbsp;</label>
-          <input
-            id="user"
-            v-model="user"
-            type="text"
-            name="user"
-          >
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" @click="userToUser2">Spara</button>
-        </div>
-      </div>
-
-    </div>
-  </div> -->
-
-
-
 
 
 
@@ -299,25 +214,72 @@ export default {
       },
 
 
+
+
+      // checkForm: function (e) {
+      //   this.errors = [];
+      //
+      //   if (!this.email) {
+      //     this.errors.push('Du måste ange din mailadress.');
+      //   } else if (!this.validEmail(this.email)) {
+      //     this.errors.push('Du måste ange en riktig mailadress.');
+      // }
+      // if (!this.password1) {
+      //     this.errors.push('Du måste ange ditt lösenord.');
+      // }
+      //
+      //   if (this.errors.length < 1) {
+      //     this.makeJSON();
+      //     return true;
+      //   }
+      //
+      //   e.preventDefault();
+      // },
+
+
+
       checkForm: function (e) {
         this.errors = [];
 
-        if (!this.email) {
-          this.errors.push('Du måste ange din mailadress.');
-        } else if (!this.validEmail(this.email)) {
-          this.errors.push('Du måste ange en riktig mailadress.');
-      }
-      if (!this.password1) {
-          this.errors.push('Du måste ange ditt lösenord.');
-      }
-
+        if (parseInt(this.balance) + parseInt(this.xbalance) < 0) {
+          this.errors.push('Du har inte så mycket pengar.');
+        }
+        if ((parseInt(this.balance) - parseInt(this.xapples) * this.price1  < 0)) {
+            this.errors.push('Du har inte så mycket pengar.');
+        }
+        if ((parseInt(this.balance) - parseInt(this.xpears) * this.price2  < 0)) {
+            this.errors.push('Du har inte så mycket pengar.');
+        }
+        if ((parseInt(this.balance) - parseInt(this.xbananas) * this.price3  < 0)) {
+            this.errors.push('Du har inte så mycket pengar.');
+        }
+        if (parseInt(this.apples) + parseInt(this.xapples) < 0) {
+            this.errors.push('Du har inte så många äpplen.');
+        }
+        if (parseInt(this.pears) + parseInt(this.xpears) < 0) {
+            this.errors.push('Du har inte så många päron.');
+        }
+        if (parseInt(this.bananas) + parseInt(this.xbananas) < 0) {
+            this.errors.push('Du har inte så många bananer.');
+        }
+      //   else if (!this.validEmail(this.email)) {
+      //     this.errors.push('Du måste ange en riktig mailadress.');
+      // }
+      // if (!this.password1) {
+      //     this.errors.push('Du måste ange ditt lösenord.');
+      // }
+      console.log("errors.length: " + this.errors.length);
         if (this.errors.length < 1) {
-          this.makeJSON();
+          this.count();
           return true;
         }
 
         e.preventDefault();
       },
+
+
+
+
 
       validEmail: function (email) {
         var re = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -351,6 +313,23 @@ export default {
   },
 
 
+count: function () {
+    if (this.xapples) {
+        this.apples = parseInt(this.apples) + parseInt(this.xapples);
+        this.balance = parseInt(this.balance) - parseInt(this.xapples) * parseInt(this.price1);
+    }
+    if (this.xpears) {
+    this.pears = parseInt(this.pears) + parseInt(this.xpears);
+    this.balance = parseInt(this.balance) - parseInt(this.xpears) * parseInt(this.price2);
+}
+    if (this.xbananas) {
+    this.bananas = parseInt(this.bananas) + parseInt(this.xbananas);
+    this.balance = parseInt(this.balance) - parseInt(this.xbananas) * parseInt(this.price3);
+}
+    if (this.xbalance) {
+    this.balance = parseInt(this.balance) + parseInt(this.xbalance);
+}
+},
 
 
   makeJSON: function () {
