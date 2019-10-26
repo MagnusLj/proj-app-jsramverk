@@ -123,10 +123,10 @@ select {
 
 
 .ittybittylabel {
-    font-size: 0.7em;
+    font-size: 1em;
     position: absolute;
-    top: 2.3em;
-    margin-left: 1em;
+    top: 1.8em;
+    margin-left: 0.5em;
 }
 
 .ittybittylabel2 {

@@ -172,6 +172,9 @@ computed:
 getToken () {
 return this.$store.state.theToken
 },
+getEmail () {
+return this.$store.state.email
+},
 },
 
 // state: {
@@ -204,6 +207,11 @@ mounted() {
         this.$store.dispatch('removeToken2', "")
     },
 
+    buyTwoEmails2(email) {
+        console.log("Buy two tokens " + email);
+      // Dispatch the action to buy two TVs
+      this.$store.dispatch('removeEmail2', "")
+  },
 
     checkForm: function (e) {
       this.errors = [];
@@ -280,14 +288,25 @@ makeJSON: function () {
     let email = this.email;
     let password = this.password1;
     this.buyTwoTokens2("");
+    this.buyTwoEmails2("");
     let that = this;
 
     that.buyTwoTokens2("");
+    that.buyTwoEmails2("");
     that.state.message = "";
     let bodyy = JSON.stringify({email:email, password:password});
     console.log(bodyy);
     // console.log(this.getMessage());
-    fetch('https://me-api.dreamsofliden.me/login', {
+
+    // fetch('https://me-api.dreamsofliden.me/login', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({email:email, password:password})
+    // })
+
+    fetch('http://localhost:5333/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -300,6 +319,7 @@ makeJSON: function () {
         // console.log(res.data.token);
         // that.tocken = null;
         that.buyTwoTokens2("");
+        that.buyTwoEmails2("");
         // that.setAToken(res.data.token);
         // console.log(that.state.message);
         // setMessage(res.data.token);
@@ -317,6 +337,7 @@ makeJSON: function () {
     .then(console.log(this.tocken))
     .then(console.log(that.tocken))
     .then(that.buyTwoTokens2(""))
+    .then(that.buyTwoEmails2(""))
     // .then((data) => console.log(data))
     .then(this.$router.push("/"))
     .catch((err)=>console.log(err))

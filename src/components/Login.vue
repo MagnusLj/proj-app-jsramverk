@@ -172,6 +172,9 @@ totalTvCount () {
 getToken () {
 return this.$store.state.theToken
 },
+// getEmail () {
+// return this.$store.state.email
+// },
 },
 
 // state: {
@@ -193,6 +196,16 @@ return this.$store.state.theToken
         // Dispatch the action to buy two TVs
         this.$store.dispatch('removeToken', tocken)
     },
+
+    getEmail() {
+    return this.$store.state.email
+    },
+
+    buyTwoEmails(email) {
+        console.log("Buy two emails" + email);
+      // Dispatch the action to buy two TVs
+      this.$store.dispatch('removeEmail', email)
+  },
 
 
     checkForm: function (e) {
@@ -257,11 +270,22 @@ setMessage: function (token) {
     // console.log(this.state.message);
 },
 
+setEmail: function (email) {
+    this.state.email = email;
+    console.log("Email set")
+    // console.log(this.state.message);
+},
+
 
 getMessage: function () {
     return this.state.message;
     // console.log(this.state.message);
 },
+
+// getEmail: function () {
+//     return this.state.email;
+//     // console.log(this.state.message);
+// },
 
 
 
@@ -297,6 +321,9 @@ makeJSON: function () {
         // console.log(res.data.token);
         that.tocken = res.data.token;
         that.buyTwoTokens(that.tocken);
+        that.email = res.data.user.email
+        that.buyTwoEmails(that.email);
+        // console.log(res.data.user.email);
         // that.setAToken(res.data.token);
         // console.log(that.state.message);
         // setMessage(res.data.token);
@@ -314,8 +341,12 @@ makeJSON: function () {
     .then(console.log(this.tocken))
     .then(console.log(that.tocken))
     .then(that.buyTwoTokens(that.tocken))
+    .then(that.buyTwoEmails(that.email))
+    .then(console.log("getEmail()"))
+    .then(console.log(that.getEmail()))
+
     // .then((data) => console.log(data))
-    .then(this.$router.push("/"))
+    .then(this.$router.push("/chatlog"))
     .catch((err)=>console.log(err))
 
 }

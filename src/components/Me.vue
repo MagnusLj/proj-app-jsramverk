@@ -19,13 +19,24 @@ export default {
   },
   data() {
     return {
-        text: "Hej, här kan du handla frukt om du är inloggad. Har du inget konto måste du registrera dig först."
+        text: "Hej, här kan du handla frukt om du är inloggad. Har du inget konto måste du registrera dig först.",
+        state: {
+           message: 'Hello!',
+           email: 'email'
+         },
     }
   },
   mounted() {
     // this.getMe();
+    this.getEmail();
   },
   methods: {
+      getEmail: function () {
+          console.log("email");
+          console.log(this.state.email);
+          return this.state.email;
+          // console.log(this.state.message);
+      },
     getMe() {
       let that = this;
       fetch("https://me-api.dreamsofliden.me")

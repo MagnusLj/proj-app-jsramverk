@@ -8,7 +8,8 @@ export default new Vuex.Store({
     totalTvCount: 10, // The TV inventory
     isLarryHappy: true,
     isJennyHappy: true,
-    theToken: null
+    theToken: null,
+    email: null
   },
 
   getters: {
@@ -26,11 +27,20 @@ export default new Vuex.Store({
   setToken(state, token) {
     state.theToken = token
 },
+setEmail(state, email) {
+  state.email = email
+},
 removeToken(state, amount) {
   state.theToken = amount
 },
-removeToken2(state, amount) {
+removeEmail(state, amount) {
+  state.email = amount
+},
+removeToken2(state) {
   state.theToken = null
+},
+removeEmail2(state) {
+  state.email = null
 },
   },
 
@@ -52,6 +62,24 @@ removeToken2(state, amount) {
     }
 },
 
+// removeEmail(context, amount) {
+//   // If we enough TVs, ask Jenny to remove it
+//   if(context.state.email >= 0) {
+//       console.log("Hello from store");
+//     // If we enough TVs, ask Jenny to remove it
+//     context.commit('removeEmail', amount);
+//   }
+// },
+
+removeEmail(context, amount) {
+  // If we enough TVs, ask Jenny to remove it
+
+      console.log("Hello from store");
+    // If we enough TVs, ask Jenny to remove it
+    context.commit('removeEmail', amount);
+
+},
+
 removeToken2(context, amount) {
   // If we enough TVs, ask Jenny to remove it
   if(context.state.theToken) {
@@ -60,8 +88,19 @@ removeToken2(context, amount) {
   }
 },
 
+removeEmail2(context, amount) {
+  // If we enough TVs, ask Jenny to remove it
+  if(context.state.email) {
+    // If we enough TVs, ask Jenny to remove it
+    context.commit('removeToken2', amount)
+  }
+},
+
   setToken(state, token) {
     state.theToken = token
+},
+setEmail(state, email) {
+  state.email = email
 },
 
   }

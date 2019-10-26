@@ -225,7 +225,17 @@ else if (this.validDate(this.day, this.year)) {
         let bodyy = JSON.stringify({name:name, email:email, password:password,
             day:day, month:month, year:year});
         console.log(bodyy);
-        fetch('https://me-api.dreamsofliden.me/register', {
+
+        // fetch('https://me-api.dreamsofliden.me/register', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({name:name, email:email, password:password,
+        //         day:day, month:month, year:year})
+        // }).then((res) => res.json())
+
+        fetch('http://localhost:5333/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -233,6 +243,7 @@ else if (this.validDate(this.day, this.year)) {
             body: JSON.stringify({name:name, email:email, password:password,
                 day:day, month:month, year:year})
         }).then((res) => res.json())
+
         .then((data) => console.log(data))
         .then(this.$router.push("/Login"))
         .catch((err)=>console.log(err))
