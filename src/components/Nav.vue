@@ -52,7 +52,7 @@
 </nav> -->
 
 
-<nav class="navbar navbar-expand-md bg-info navbar-dark fixed-top">
+<nav class="navbar navbar-expand-md bg-success navbar-dark fixed-top">
   <!-- <a class="navbar-brand" href="#">Navbar</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -86,17 +86,17 @@
         <router-link class="nav-link" to="/chat">Chatt</router-link>
       </li>
 -->
-      <li class="nav-item">
-        <router-link class="nav-link" to="/chatlog">Chattlogg</router-link>
+      <li v-if="this.getToken" class="nav-item">
+        <router-link class="nav-link" to="/chatlog">Handla</router-link>
       </li>
 
       <li v-if="!this.getToken" class="nav-item">
         <router-link class="nav-link" to="/registration">Ny användare</router-link>
       </li>
 
-      <li v-if="this.getToken" class="nav-item">
+      <!-- <li v-if="this.getToken" class="nav-item">
         <router-link class="nav-link" to="/addoredit">Lägg till eller redigera</router-link>
-      </li>
+      </li> -->
 
       <li  v-if="this.getToken" class="nav-item">
         <router-link class="nav-link" to="/logout">Logga ut</router-link>

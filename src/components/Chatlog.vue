@@ -2,7 +2,9 @@
     <main>
         <Nav />
         <div class="wrapper">
-        <br><h2><br>Chattrum</h2>
+        <br><h2><br>Handelssida</h2>
+
+        <p>Aktuella priser för äpplen (1), päron (2) och bananer (3)<br><br></p>
 
         <pure-vue-chart
           :points="[price1,price2,price3]"
@@ -12,6 +14,8 @@
           :width="400"
           :height="250"
         />
+
+
 
 
 
@@ -28,33 +32,10 @@
             </ul>
           </p>
 
-          <!-- <p>
-            <label for="name">Namn<br></label>
-            </p>
-            <div class="form-group">
-            <input
-              id="name"
-              v-model="name"
-              type="text"
-              name="name"
-            >
-        </div> -->
+        <br>
+        <p><b>Innehav</b> <br>Äpplen: {{ apples }}<br>Päron: {{ pears }} <br>Bananer: {{ bananas }} <br>Pengar: {{ balance }} <br><br></p>
 
-
-          <!-- <p>
-            <label for="email">Email<br></label>
-        </p>
-            <div class="form-group">
-            <input
-              id="email"
-              v-model="email"
-              type="email"
-              name="email"
-            >
-            </div> -->
-
-
-        <p>Innehav: Äpplen: {{ apples }}, päron: {{ pears }}, bananer: {{ bananas }}, pengar: {{ balance }}</p>
+<p>Använd positiva siffor för att handla frukter eller sätta in pengar. Använd negativa siffror för att sälja frukter eller ta ut pengar.<br><br></p>
 
 
           <div>
@@ -66,30 +47,7 @@
               <input id="xapples" v-model="xapples" type="number" name="xapples">
               </div>
 
-        <!-- <p>My mother has <span style="color:blue">blue</span> eyes.</p>  -->
 
-
-        <!-- <div class="form-group">
-        <label for="month" class="ittybittylabel">Månad</label>
-            <select
-              id="month"
-              v-model="month"
-              name="month"
-            >
-              <option value="januari">januari</option>
-              <option value="februari">februari</option>
-              <option value="mars">mars</option>
-              <option value="april">april</option>
-              <option value="maj">maj</option>
-              <option value="juni">juni</option>
-              <option value="juli">juli</option>
-              <option value="augusti">augusti</option>
-              <option value="september">september</option>
-              <option value="oktober">oktober</option>
-              <option value="november">november</option>
-              <option value="december">december</option>
-            </select>
-            </div> -->
 
             <div class="form-group">
             <label for="xpears" class="ittybittylabel">Päron (2)</label>
@@ -118,19 +76,21 @@
 
 
           <p>
+              <br>
             <button
             type="button"
               @click="checkForm"
             >SKICKA</button>
+            <br><br>
           </p>
 
 
         </form>
 
-
+<!--
         <p>1: {{ name1 }} : {{ price1 }} </p>
         <p>2: {{ name2 }} : {{ price2 }} </p>
-        <p>3: {{ name3 }} : {{ price3 }} </p>
+        <p>3: {{ name3 }} : {{ price3 }} </p> -->
 
 
   </div>
@@ -163,7 +123,7 @@ export default {
             year: null,
             password1: null,
             password2: null,
-            tocken: "",
+            token: "",
             state: {
                message: 'Hello!'
              },
@@ -186,8 +146,8 @@ export default {
             message: '',
             messages: [],
             time2: '',
-            socket : io('http://localhost:3333')
-            //socket : io('https://socket-server.dreamsofliden.me')
+            // socket : io('http://localhost:3333')
+            socket : io('https://proj-socket-server.dreamsofliden.me')
         }
     },
     computed:
@@ -196,9 +156,9 @@ export default {
     totalTvCount () {
       return this.$store.state.totalTvCount
     },
-    getToken () {
-    return this.$store.state.theToken
-    },
+    // getToken () {
+    // return this.$store.state.theToken
+    // }
     // getEmail () {
     // return this.$store.state.email
     // },
@@ -304,6 +264,12 @@ export default {
   return this.$store.state.email
   },
 
+  getToken () {
+      console.log("getToken!!!!!")
+      console.log(this.$store.state.theToken)
+  return this.$store.state.theToken
+  },
+
 
   setMessage: function (token) {
       this.state.message = token;
@@ -337,7 +303,10 @@ count: function () {
 },
 
 
+
   makeJSON: function () {
+      let token = this.$store.state.theToken
+      console.log("The token is: " + token);
       let email = this.email;
       // let password = this.password1;
       let apples = this.apples;
@@ -356,10 +325,12 @@ count: function () {
       //     body: JSON.stringify({email:email, password:password})
       // })
 
-      fetch('http://localhost:5333/updateaccount', {
+      // fetch('http://localhost:5333/updateaccount', {
+      fetch('https://proj-api.dreamsofliden.me/updateaccount', {
           method: 'POST',
           headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'x-access-token': token
           },
           body: JSON.stringify({email:email, apples:apples, pears:pears, bananas:bananas,
           balance:balance})
@@ -383,6 +354,8 @@ count: function () {
 
 
   makeJSON2: function () {
+      let token = this.$store.state.theToken
+      console.log("The token is: " + token);
       let email = this.getEmail();
       console.log("this email: " + email);
       let that = this;
@@ -413,10 +386,12 @@ count: function () {
       // }
 
 
-      fetch('http://localhost:5333/getaccount', {
+      // fetch('http://localhost:5333/getaccount', {
+      fetch('https://proj-api.dreamsofliden.me/getaccount', {
           method: 'POST',
           headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'x-access-token': token
           },
           body: JSON.stringify({email:email})
       })
@@ -488,6 +463,7 @@ count: function () {
     //     this.openModal();
     // }
     mounted() {
+        this.token = this.getToken();
         this.makeJSON2();
         this.email = this.getEmail();
         console.log("get email");

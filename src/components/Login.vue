@@ -266,7 +266,8 @@ makeJSON: function () {
     //     body: JSON.stringify({email:email, password:password})
     // })
 
-    fetch('http://localhost:5333/login', {
+    fetch('https://proj-api.dreamsofliden.me/login', {
+    // fetch('http://localhost:5333/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -293,18 +294,18 @@ makeJSON: function () {
         // console.log(this.getMessage());
     })
     // .then(this.setMessage(res.data.token))
-    .then(console.log("State message2"))
+    // .then(console.log("State message2"))
     // .then(console.log(that.getMessage()))
-    .then(console.log("Tocken"))
-    .then(console.log(this.tocken))
-    .then(console.log(that.tocken))
+    // .then(console.log("Tocken"))
+    // .then(console.log(this.tocken))
+    // .then(console.log(that.tocken))
     .then(that.buyTwoTokens(that.tocken))
     .then(that.buyTwoEmails(that.email))
-    .then(console.log("getEmail()"))
-    .then(console.log(that.getEmail()))
+    // .then(console.log("getEmail()"))
+    // .then(console.log(that.getEmail()))
 
     // .then((data) => console.log(data))
-    .then(this.$router.push("/chatlog"))
+    .then(this.$router.push("/"))
     .catch((err)=>console.log(err))
 
 }

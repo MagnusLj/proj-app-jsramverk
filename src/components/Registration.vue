@@ -235,7 +235,8 @@ else if (this.validDate(this.day, this.year)) {
         //         day:day, month:month, year:year})
         // }).then((res) => res.json())
 
-        fetch('http://localhost:5333/register', {
+        fetch('https://proj-api.dreamsofliden.me/register', {
+        // fetch('http://localhost:5333/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
