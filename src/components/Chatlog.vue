@@ -11,7 +11,7 @@
           :show-x-axis="true"
           :show-y-axis="true"
           :show-values="true"
-          :width="400"
+          :width="330"
           :height="250"
         />
 
